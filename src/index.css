@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@600&display=swap');
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -8,6 +10,7 @@ body {
   background-color: #1e1e1e;
   color: #e1e1e1;
   display: flex;
+  font-family: 'Rubik', sans-serif;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
@@ -29,4 +32,13 @@ body {
   font-weight: bold;
   min-width: 600px;
   border-bottom: solid 2px #fff;
+}
+
+.container .valid-keys .matched {
+  background-color: #fdf8c5;
+  color: 282c34;
+}
+
+.container .valid-keys .remainder {
+  opacity: 0.5;
 }

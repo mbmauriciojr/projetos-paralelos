@@ -5,8 +5,8 @@ const App = () => {
     <div className="container">
 
       <div className="valid-keys">
-        <span className="matched"></span>
-        <span className="remainder"></span>
+        <span className="matched">mar</span>
+        <span className="remainder">celo</span>
       </div>
 
       <div className="typed-keys"></div>
@@ -14,7 +14,9 @@ const App = () => {
       <div className="completed-words">
 
         <ol>
-          <li></li>
+          <li>cidade</li>
+          <li>carro</li>
+          <li>profissional</li>
         </ol>
 
       </div>
