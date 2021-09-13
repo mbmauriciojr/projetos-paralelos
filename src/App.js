@@ -9,7 +9,7 @@ const App = () => {
         <span className="remainder">celo</span>
       </div>
 
-      <div className="typed-keys"></div>
+      <div className="typed-keys">asdferetmar</div>
 
       <div className="completed-words">
 

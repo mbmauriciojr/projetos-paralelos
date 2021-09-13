@@ -56,3 +56,10 @@ body {
   line-height: 2.5rem;
   opacity: 0.5;
 }
+
+.container .typed-keys {
+  margin-top: 20px;
+  font-size: 1.3rem;
+  width: 600px;
+  overflow: hidden;
+}
