@@ -11,16 +11,23 @@ const getWord = () => {
   return word.toLowerCase();
 };
 
+const Word = ({ word, validKeys }) => {
+  return (
+    <>
+      <span className="matched"></span>
+      <span className="remainder">{ word }</span>
+    </>
+  );
+};
+
 const App = () => {
   const [ typedKeys, setTypedKeys ] = useState([]);
+  const [ validKeys, setValidKeys ] = useState([]);
   const [word, setWord] = useState('');
 
   useEffect(() => {
     setWord(getWord());
   }, []);
-
-  console.log('word', getWord());
-
 
   const handleKeyDown = (e) => {
     e.preventDefault();
@@ -28,16 +35,13 @@ const App = () => {
     const { key } = e;
 
     setTypedKeys((prev) => [...prev, key].slice(MAX_TYPED_KEYS * -1));
-
-    console.log('key', key);
   };
 
   return(
     <div className="container" tabIndex="0" onKeyDown={ handleKeyDown }>
 
       <div className="valid-keys">
-        <span className="matched"></span>
-        <span className="remainder">{ word }</span>
+        <Word word={ word } validKeys={ validKeys } />
       </div>
 
       <div className="typed-keys">{ typedKeys ? typedKeys.join(' ') : null }</div>
