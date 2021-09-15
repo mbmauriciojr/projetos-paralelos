@@ -11,6 +11,14 @@ const getWord = () => {
   return word.toLowerCase();
 };
 
+const isValidKey = (key, word) => {
+  if(!word) return false;
+
+  const result = word.split('').includes(key);
+
+  return result;
+};
+
 const Word = ({ word, validKeys }) => {
   return (
     <>
@@ -31,10 +39,19 @@ const App = () => {
 
   const handleKeyDown = (e) => {
     e.preventDefault();
-
     const { key } = e;
 
     setTypedKeys((prev) => [...prev, key].slice(MAX_TYPED_KEYS * -1));
+
+    if (isValidKey(key, word)) {
+      setValidKeys((prev) => {
+        const isValidLength = prev.length <= word.length;
+        const isNextChar = isValidLength && word[prev.length] === key;
+
+        return (isNextChar) ? [...prev, key] : prev;
+
+      });
+    }
   };
 
   return(
