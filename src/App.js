@@ -48,19 +48,17 @@ const App = () => {
     const wordFromValidKeys = validKeys.join('').toLowerCase();
 
     if (word === wordFromValidKeys) {
-      // Adicionar word ao completedWords
-      // limpar o array valiKeys
-      // buscar uma nova palavra
-
       let newWord = null;
 
       do {
         newWord = getWord();
       } while(completedWords.includes(newWord));
-
       // Faz um loop até pegar uma palavra que não esteja no array de
       // palavras completadas
     
+    setWord(newWord);
+    setValidKeys([]);
+    setCompletedWords((prev) => [...prev, word]);
     }
   }, [word, validKeys, completedWords]);
 
