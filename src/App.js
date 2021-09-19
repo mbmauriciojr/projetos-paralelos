@@ -47,7 +47,7 @@ const App = () => {
   useEffect(() => {
     const wordFromValidKeys = validKeys.join('').toLowerCase();
 
-    if (word === wordFromValidKeys) {
+    if (word && word === wordFromValidKeys) {
       let newWord = null;
 
       do {
@@ -91,9 +91,7 @@ const App = () => {
       <div className="completed-words">
 
         <ol>
-          <li>cidade</li>
-          <li>carro</li>
-          <li>profissional</li>
+          {completedWords.map((word) => (<li key={ word }>{ word }</li>))}
         </ol>
 
       </div>
