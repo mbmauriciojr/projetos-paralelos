@@ -37,11 +37,30 @@ const Word = ({ word, validKeys }) => {
 const App = () => {
   const [ typedKeys, setTypedKeys ] = useState([]);
   const [ validKeys, setValidKeys ] = useState([]);
+  const [completedWords, setCompletedWords] = useState([]);
   const [word, setWord] = useState('');
 
   useEffect(() => {
     setWord(getWord());
   }, []);
+
+  useEffect(() => {
+    const wordFromValidKeys = validKeys.join('').toLowerCase();
+
+    if (word && word === wordFromValidKeys) {
+      let newWord = null;
+
+      do {
+        newWord = getWord();
+      } while(completedWords.includes(newWord));
+      // Faz um loop até pegar uma palavra que não esteja no array de
+      // palavras completadas
+    
+    setWord(newWord);
+    setValidKeys([]);
+    setCompletedWords((prev) => [...prev, word]);
+    }
+  }, [word, validKeys, completedWords]);
 
   const handleKeyDown = (e) => {
     e.preventDefault();
@@ -72,9 +91,7 @@ const App = () => {
       <div className="completed-words">
 
         <ol>
-          <li>cidade</li>
-          <li>carro</li>
-          <li>profissional</li>
+          {completedWords.map((word) => (<li key={ word }>{ word }</li>))}
         </ol>
 
       </div>
